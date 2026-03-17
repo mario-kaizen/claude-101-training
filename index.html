@@ -5935,6 +5935,103 @@ Start now. Let's begin with Step 1.</pre>
     <button class="prompt-toggle" onclick="togglePrompt('prompt5', this)">&#9660; Show full prompt</button>
   </div>
 
+  <!-- ═══ WHEN THE OUTPUT ISN'T RIGHT ═══ -->
+  <div class="section-title" style="margin-top:96px;">When the Output <em style="color:var(--gold);font-style:italic;">Isn't Right.</em></div>
+  <p class="section-sub">The first output is a draft. The magic is in the iteration. Here's how to push Claude until it gets there.</p>
+
+  <p>If Claude gives you something generic, it's not Claude's fault. It means the answers you gave weren't specific enough — or you accepted the first draft instead of refining it.</p>
+
+  <p>The best outputs come from 2-3 rounds of feedback. Here's exactly what to say.</p>
+
+  <!-- Issue cards -->
+  <div style="display:flex;flex-direction:column;gap:16px;margin:32px 0;">
+
+    <div class="prompt-card" style="padding:28px 32px;">
+      <h4 style="font-size:18px;margin-bottom:6px;">Too Generic</h4>
+      <p class="prompt-desc" style="margin-bottom:14px;">Claude gave you something that could apply to any business.</p>
+      <div class="prompt-block" style="max-height:none;">
+        <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+        <pre>That's too broad. Here's what makes my business specifically different from others in this space:
+
+[Explain your specific difference — your methodology, your niche, your delivery model, your origin story]
+
+Rewrite with that specificity. Every sentence should be something only MY business could say.</pre>
+      </div>
+    </div>
+
+    <div class="prompt-card" style="padding:28px 32px;">
+      <h4 style="font-size:18px;margin-bottom:6px;">Wrong Tone</h4>
+      <p class="prompt-desc" style="margin-bottom:14px;">It sounds like AI, not like you.</p>
+      <div class="prompt-block" style="max-height:none;">
+        <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+        <pre>This doesn't sound like me. Here's how I actually communicate:
+
+[Paste a real email, caption, or message you've written]
+
+Notice the sentence length, the rhythm, the words I reach for. Adjust the voice to match — less formal, more [direct/warm/casual/sharp]. Remove any words I would never say.</pre>
+      </div>
+    </div>
+
+    <div class="prompt-card" style="padding:28px 32px;">
+      <h4 style="font-size:18px;margin-bottom:6px;">Too Long</h4>
+      <p class="prompt-desc" style="margin-bottom:14px;">Claude over-explained. You need it tighter.</p>
+      <div class="prompt-block" style="max-height:none;">
+        <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+        <pre>Cut this by half. Keep only the parts that are specific to my business. Remove anything that could apply to any business in my industry. If a section doesn't earn its place, delete it.</pre>
+      </div>
+    </div>
+
+    <div class="prompt-card" style="padding:28px 32px;">
+      <h4 style="font-size:18px;margin-bottom:6px;">Missed the Point</h4>
+      <p class="prompt-desc" style="margin-bottom:14px;">Claude focused on the wrong thing.</p>
+      <div class="prompt-block" style="max-height:none;">
+        <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+        <pre>You've focused on [X] but the real constraint in my business is [Y]. Let me explain why that matters more:
+
+[Explain the actual problem]
+
+Rewrite the [section/document/strategy] with this as the central focus.</pre>
+      </div>
+    </div>
+
+    <div class="prompt-card" style="padding:28px 32px;">
+      <h4 style="font-size:18px;margin-bottom:6px;">Surface-Level</h4>
+      <p class="prompt-desc" style="margin-bottom:14px;">Claude told you what you already know.</p>
+      <div class="prompt-block" style="max-height:none;">
+        <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+        <pre>Go deeper. What you've written is what I already know. I need the insight I haven't considered — the pattern I'm too close to see, the assumption I'm making that might be wrong, the constraint I'm not acknowledging. Tell me something that makes me uncomfortable.</pre>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- The Feedback Formula -->
+  <div class="section-title">The Feedback <em style="color:var(--gold);font-style:italic;">Formula.</em></div>
+  <p class="section-sub">Three lines. Use this pattern every time Claude gives you a draft that's close but not there yet.</p>
+
+  <div class="callout" style="margin:24px 0 32px;">
+    <p style="margin-bottom:12px;"><strong>Step 1:</strong> Tell Claude what's working. <em style="color:var(--stone);">"The structure is solid and the tone is close."</em></p>
+    <p style="margin-bottom:12px;"><strong>Step 2:</strong> Tell Claude what's not. <em style="color:var(--stone);">"But section 3 is too generic and the opening doesn't hook me."</em></p>
+    <p style="margin-bottom:0;"><strong>Step 3:</strong> Give Claude a specific example. <em style="color:var(--stone);">"Here's how I'd actually say that opening line: '[your version]'. Match that energy."</em></p>
+  </div>
+
+  <p>That's it. Working → not working → example. Three lines. Claude gets dramatically better on the second draft when you give it this kind of structured feedback.</p>
+
+  <!-- The Power Move -->
+  <div class="section-title">The Power <em style="color:var(--gold);font-style:italic;">Move.</em></div>
+  <p class="section-sub">One prompt you can use at the end of any conversation to catch what Claude missed.</p>
+
+  <div class="prompt-card" style="padding:28px 32px;">
+    <h4 style="font-size:18px;margin-bottom:6px;">The Self-Challenge</h4>
+    <p class="prompt-desc" style="margin-bottom:14px;">Ask Claude to audit its own work before you accept it.</p>
+    <div class="prompt-block" style="max-height:none;">
+      <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+      <pre>Before I accept this — challenge your own output. What assumptions did you make that might be wrong? What would you change if you knew more about my business? What's the weakest section and how would you strengthen it? Be direct.</pre>
+    </div>
+  </div>
+
+  <p style="margin-top:24px;">This one prompt catches 80% of the gaps. Claude will identify the weak spots, explain its assumptions, and offer a better version — without you needing to figure out what went wrong.</p>
+
   <!-- Bridge to What's Next -->
   <div class="compare-bridge" style="margin-top: 72px;">
     <p>You've built the foundation. Now see what it unlocks.</p>
