@@ -3408,6 +3408,8 @@
     color: var(--cream);
     line-height: 1.15;
     margin-bottom: 20px;
+    opacity: 0;
+    animation: panelIn 0.5s var(--ease-out) 0.15s forwards;
   }
 
   .try-hero-title em {
@@ -3421,6 +3423,8 @@
     line-height: 1.65;
     max-width: 600px;
     margin: 0 auto 36px;
+    opacity: 0;
+    animation: panelIn 0.5s var(--ease-out) 0.3s forwards;
   }
 
   .try-cta-btn {
@@ -3435,6 +3439,8 @@
     padding: 16px 40px;
     border-radius: 2px;
     transition: background 0.2s ease, transform 0.2s ease;
+    opacity: 0;
+    animation: panelIn 0.4s var(--ease-out) 0.45s forwards;
   }
 
   .try-cta-btn:hover {
@@ -3446,6 +3452,8 @@
     font-size: 13px;
     color: var(--stone);
     margin-top: 16px;
+    opacity: 0;
+    animation: panelIn 0.4s var(--ease-out) 0.55s forwards;
   }
 
   /* Prompt sections */
@@ -5502,11 +5510,11 @@
 <section id="tryit" class="panel">
 
   <!-- Hero -->
-  <div class="try-hero reveal">
+  <div class="try-hero">
     <div class="try-hero-inner">
       <h1 class="try-hero-title">Stop Reading. <em>Try This.</em></h1>
       <p class="try-hero-sub">Open claude.ai in another tab. Try these three prompts. Come back when your jaw's off the floor.</p>
-      <a href="https://claude.ai" target="_blank" class="try-cta-btn">Open Claude &rarr;</a>
+      <a href="https://claude.ai" target="_blank" rel="noopener" class="try-cta-btn">Open Claude &rarr;</a>
       <p class="try-hero-note">Free to use. No credit card needed.</p>
     </div>
   </div>
@@ -5563,7 +5571,7 @@ Before you help me execute this, tell me everything that could go wrong. Challen
   </div>
 
   <!-- Before/After section -->
-  <div class="try-before-after reveal">
+  <div class="try-before-after">
     <div class="try-before-after-inner">
       <h2 class="try-before-after-title">Save Your Results.</h2>
       <p class="try-before-after-desc">Screenshot or copy what Claude gave you. These are your "before" outputs &mdash; generated without any business context loaded.</p>
@@ -5584,10 +5592,10 @@ Before you help me execute this, tell me everything that could go wrong. Challen
   </div>
 
   <!-- Bridge -->
-  <div class="try-bridge reveal">
+  <div class="try-bridge">
     <div class="try-bridge-inner">
-      <p>Ready to load your context? Let's set up your Claude account properly.</p>
-      <a href="#" class="try-bridge-btn" onclick="event.preventDefault(); document.querySelector('[data-tab=start]').click();">Set Up Claude &rarr;</a>
+      <p>Ready to load your context and put Claude to work? Let's build your foundation documents.</p>
+      <a href="#" class="try-bridge-btn" onclick="event.preventDefault(); document.querySelector('[data-tab=prompts]').click();">The Prompt Vault &rarr;</a>
     </div>
   </div>
 
