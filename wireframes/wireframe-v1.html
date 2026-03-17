@@ -1,0 +1,1146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WIREFRAME — Claude 101: The Complete Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --color-ink: #1A1A18;
+    --color-cream: #F5F0E8;
+    --color-gold: #C9A84C;
+    --color-charcoal: #2E2E2A;
+    --color-stone: #8C8778;
+    --color-parchment: #EDE8DC;
+    --color-white: #FFFFFF;
+    --font-display: 'Playfair Display', Georgia, serif;
+    --font-body: 'DM Sans', system-ui, sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--color-cream);
+    color: var(--color-ink);
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  /* ── WIREFRAME OVERLAY ── */
+  .wireframe-badge {
+    position: fixed;
+    top: 16px;
+    right: 16px;
+    background: var(--color-gold);
+    color: var(--color-ink);
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 8px 16px;
+    border-radius: 2px;
+    z-index: 1000;
+  }
+
+  /* ── LAYOUT: TAB APP ── */
+  .app-shell {
+    display: flex;
+    min-height: 100vh;
+  }
+
+  /* ── SIDEBAR ── */
+  .sidebar {
+    width: 280px;
+    background: var(--color-charcoal);
+    color: var(--color-cream);
+    padding: 40px 0;
+    flex-shrink: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    overflow-y: auto;
+    z-index: 10;
+  }
+
+  .sidebar-brand {
+    padding: 0 32px;
+    margin-bottom: 48px;
+  }
+
+  .sidebar-brand h2 {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--color-cream);
+    line-height: 1.2;
+    margin-bottom: 4px;
+  }
+
+  .sidebar-brand p {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-stone);
+  }
+
+  .sidebar-nav {
+    list-style: none;
+  }
+
+  .sidebar-nav li {
+    position: relative;
+  }
+
+  .sidebar-nav a {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 32px;
+    color: var(--color-stone);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    transition: all 0.2s ease;
+    border-left: 3px solid transparent;
+  }
+
+  .sidebar-nav a:hover {
+    color: var(--color-cream);
+    background: rgba(255,255,255,0.04);
+  }
+
+  .sidebar-nav a.active {
+    color: var(--color-cream);
+    background: rgba(255,255,255,0.06);
+    border-left-color: var(--color-gold);
+  }
+
+  .sidebar-nav .tab-icon {
+    font-size: 18px;
+    width: 24px;
+    text-align: center;
+  }
+
+  .sidebar-nav .section-label {
+    display: block;
+    padding: 24px 32px 8px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--color-stone);
+    opacity: 0.6;
+  }
+
+  .sidebar-footer {
+    padding: 32px;
+    margin-top: 48px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .sidebar-footer p {
+    font-size: 11px;
+    color: var(--color-stone);
+    opacity: 0.5;
+    line-height: 1.5;
+  }
+
+  /* ── MAIN CONTENT ── */
+  .main {
+    flex: 1;
+    margin-left: 280px;
+    min-height: 100vh;
+  }
+
+  .tab-content {
+    display: none;
+    padding: 64px 80px;
+    max-width: 1100px;
+  }
+
+  .tab-content.active {
+    display: block;
+  }
+
+  /* ── TYPOGRAPHY ── */
+  .page-title {
+    font-family: var(--font-display);
+    font-size: 48px;
+    font-weight: 900;
+    color: var(--color-ink);
+    line-height: 1.1;
+    margin-bottom: 16px;
+  }
+
+  .page-subtitle {
+    font-size: 18px;
+    color: var(--color-stone);
+    font-weight: 400;
+    max-width: 600px;
+    margin-bottom: 48px;
+    line-height: 1.7;
+  }
+
+  .section-heading {
+    font-family: var(--font-display);
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--color-ink);
+    margin-bottom: 12px;
+    margin-top: 64px;
+    position: relative;
+    padding-bottom: 16px;
+  }
+
+  .section-heading::after {
+    content: '';
+    display: block;
+    width: 48px;
+    height: 2px;
+    background: var(--color-gold);
+    margin-top: 12px;
+  }
+
+  .subsection-heading {
+    font-family: var(--font-body);
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--color-ink);
+    margin-top: 40px;
+    margin-bottom: 12px;
+  }
+
+  p {
+    color: var(--color-ink);
+    font-weight: 400;
+    line-height: 1.7;
+    margin-bottom: 16px;
+    max-width: 65ch;
+  }
+
+  p.muted {
+    color: var(--color-stone);
+  }
+
+  /* ── WIREFRAME BLOCKS ── */
+  .wire-block {
+    background: var(--color-parchment);
+    border: 2px dashed var(--color-stone);
+    border-radius: 2px;
+    padding: 32px;
+    margin: 24px 0;
+    position: relative;
+  }
+
+  .wire-block::before {
+    content: attr(data-label);
+    position: absolute;
+    top: -10px;
+    left: 16px;
+    background: var(--color-gold);
+    color: var(--color-ink);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 2px 10px;
+    border-radius: 2px;
+  }
+
+  .wire-block p {
+    color: var(--color-stone);
+    font-size: 14px;
+    font-style: italic;
+    margin: 0;
+  }
+
+  /* ── COMPARISON TABLE ── */
+  .comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 24px 0 32px;
+  }
+
+  .comparison-table th {
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-stone);
+    padding: 12px 16px;
+    text-align: left;
+    border-bottom: 2px solid var(--color-ink);
+  }
+
+  .comparison-table td {
+    padding: 14px 16px;
+    font-size: 15px;
+    border-bottom: 1px solid var(--color-parchment);
+    vertical-align: top;
+  }
+
+  .comparison-table tr:last-child td {
+    border-bottom: none;
+  }
+
+  .comparison-table .feature-name {
+    font-weight: 500;
+    color: var(--color-ink);
+  }
+
+  .comparison-table .check {
+    color: var(--color-gold);
+    font-weight: 700;
+    font-size: 18px;
+  }
+
+  .comparison-table .dim {
+    color: var(--color-stone);
+    font-size: 14px;
+  }
+
+  /* ── FEATURE CARDS ── */
+  .feature-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin: 24px 0 32px;
+  }
+
+  .feature-card {
+    background: var(--color-white);
+    border: 1px solid var(--color-parchment);
+    border-radius: 2px;
+    padding: 28px;
+    box-shadow: 0 2px 16px rgba(26,26,24,0.04);
+  }
+
+  .feature-card .card-icon {
+    font-size: 28px;
+    margin-bottom: 12px;
+  }
+
+  .feature-card h4 {
+    font-family: var(--font-body);
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  .feature-card p {
+    font-size: 14px;
+    color: var(--color-stone);
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  /* ── ECOSYSTEM CARDS ── */
+  .ecosystem-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin: 24px 0;
+  }
+
+  .eco-card {
+    background: var(--color-charcoal);
+    border-radius: 2px;
+    padding: 32px;
+    color: var(--color-cream);
+  }
+
+  .eco-card.featured {
+    border: 2px solid var(--color-gold);
+  }
+
+  .eco-card .eco-badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 2px;
+    margin-bottom: 16px;
+  }
+
+  .eco-card .eco-badge.start {
+    background: var(--color-gold);
+    color: var(--color-ink);
+  }
+
+  .eco-card .eco-badge.collab {
+    background: rgba(201,168,76,0.2);
+    color: var(--color-gold);
+  }
+
+  .eco-card .eco-badge.power {
+    background: rgba(201,168,76,0.1);
+    color: var(--color-stone);
+  }
+
+  .eco-card h4 {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+
+  .eco-card p {
+    font-size: 14px;
+    color: var(--color-stone);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* ── SHOWCASE TAB ── */
+  .showcase-category {
+    margin-top: 48px;
+  }
+
+  .category-header {
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-stone);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .category-header::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--color-parchment);
+  }
+
+  .showcase-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .showcase-card {
+    background: var(--color-white);
+    border: 1px solid var(--color-parchment);
+    border-radius: 2px;
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+  }
+
+  .showcase-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(26,26,24,0.1);
+  }
+
+  .showcase-preview {
+    height: 200px;
+    background: var(--color-parchment);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px dashed var(--color-stone);
+    border-radius: 0;
+    margin: 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .showcase-preview .preview-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-stone);
+    background: rgba(255,255,255,0.8);
+    padding: 6px 14px;
+    border-radius: 2px;
+  }
+
+  .showcase-info {
+    padding: 20px;
+  }
+
+  .showcase-info h4 {
+    font-family: var(--font-body);
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+
+  .showcase-info p {
+    font-size: 13px;
+    color: var(--color-stone);
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  .showcase-info .build-time {
+    display: inline-block;
+    margin-top: 8px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--color-gold);
+  }
+
+  /* ── DOCUMENT LIST ── */
+  .doc-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin: 20px 0;
+  }
+
+  .doc-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 18px;
+    background: var(--color-white);
+    border: 1px solid var(--color-parchment);
+    border-radius: 2px;
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .doc-item .doc-icon {
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+
+  .doc-item .doc-name {
+    flex: 1;
+  }
+
+  .doc-item .doc-date {
+    font-size: 12px;
+    color: var(--color-stone);
+    flex-shrink: 0;
+  }
+
+  /* ── PROMPT VAULT ── */
+  .prompt-card {
+    background: var(--color-charcoal);
+    border-radius: 2px;
+    padding: 36px;
+    margin: 24px 0;
+    color: var(--color-cream);
+    position: relative;
+  }
+
+  .prompt-card .prompt-number {
+    font-family: var(--font-display);
+    font-size: 64px;
+    font-weight: 900;
+    color: rgba(201,168,76,0.15);
+    position: absolute;
+    top: 16px;
+    right: 24px;
+    line-height: 1;
+  }
+
+  .prompt-card h4 {
+    font-family: var(--font-display);
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  .prompt-card .prompt-desc {
+    font-size: 15px;
+    color: var(--color-stone);
+    margin-bottom: 20px;
+    line-height: 1.7;
+    max-width: 600px;
+  }
+
+  .prompt-block {
+    background: rgba(0,0,0,0.3);
+    border-left: 3px solid var(--color-gold);
+    padding: 20px 24px;
+    border-radius: 0 2px 2px 0;
+    position: relative;
+  }
+
+  .prompt-block pre {
+    font-family: var(--font-body);
+    font-size: 14px;
+    color: var(--color-cream);
+    white-space: pre-wrap;
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  .prompt-block .copy-btn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: var(--color-gold);
+    color: var(--color-ink);
+    border: none;
+    padding: 6px 14px;
+    font-family: var(--font-body);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: background 0.2s ease;
+  }
+
+  .prompt-block .copy-btn:hover {
+    background: var(--color-cream);
+  }
+
+  /* ── CALLOUT ── */
+  .callout {
+    background: var(--color-white);
+    border: 1px solid var(--color-parchment);
+    border-left: 4px solid var(--color-gold);
+    padding: 24px 28px;
+    margin: 24px 0;
+    border-radius: 0 2px 2px 0;
+  }
+
+  .callout p {
+    margin: 0;
+    font-size: 15px;
+  }
+
+  .callout strong {
+    color: var(--color-ink);
+  }
+
+  /* ── TIME MULTIPLIER VISUAL ── */
+  .time-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin: 24px 0;
+  }
+
+  .time-card {
+    background: var(--color-white);
+    border: 1px solid var(--color-parchment);
+    border-radius: 2px;
+    padding: 28px;
+    text-align: center;
+  }
+
+  .time-card .old-time {
+    font-size: 14px;
+    color: var(--color-stone);
+    text-decoration: line-through;
+    margin-bottom: 4px;
+  }
+
+  .time-card .new-time {
+    font-family: var(--font-display);
+    font-size: 36px;
+    font-weight: 900;
+    color: var(--color-gold);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .time-card .task-name {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--color-ink);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 1024px) {
+    .sidebar { width: 240px; }
+    .main { margin-left: 240px; }
+    .tab-content { padding: 48px 40px; }
+  }
+
+  @media (max-width: 768px) {
+    .sidebar {
+      position: relative;
+      width: 100%;
+      padding: 20px 0;
+    }
+    .main { margin-left: 0; }
+    .feature-grid, .ecosystem-grid, .showcase-grid, .time-grid { grid-template-columns: 1fr; }
+    .doc-list { grid-template-columns: 1fr; }
+    .tab-content { padding: 32px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wireframe-badge">Wireframe v1</div>
+
+<div class="app-shell">
+
+  <!-- ════════════ SIDEBAR ════════════ -->
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <h2>Claude 101</h2>
+      <p>The Complete Guide</p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li class="section-label">Learn</li>
+        <li><a href="#" class="active" onclick="showTab('claude101')"><span class="tab-icon">&#9672;</span> Introduction</a></li>
+        <li><a href="#" onclick="showTab('claude101-compare')"><span class="tab-icon">&#8644;</span> ChatGPT vs Claude</a></li>
+        <li><a href="#" onclick="showTab('claude101-features')"><span class="tab-icon">&#9881;</span> What Can Claude Do?</a></li>
+        <li><a href="#" onclick="showTab('claude101-time')"><span class="tab-icon">&#8987;</span> Multiplying Time</a></li>
+        <li><a href="#" onclick="showTab('claude101-ecosystem')"><span class="tab-icon">&#9729;</span> The Ecosystem</a></li>
+
+        <li class="section-label">Proof</li>
+        <li><a href="#" onclick="showTab('showcase')"><span class="tab-icon">&#9733;</span> What I've Built</a></li>
+
+        <li class="section-label">Action</li>
+        <li><a href="#" onclick="showTab('getting-started')"><span class="tab-icon">&#9654;</span> Getting Started</a></li>
+        <li><a href="#" onclick="showTab('prompts')"><span class="tab-icon">&#9998;</span> The Prompt Vault</a></li>
+      </ul>
+    </nav>
+
+    <div class="sidebar-footer">
+      <p>Built with Claude Code<br>by Mario Paguio<br>Kaizen Collective</p>
+    </div>
+  </aside>
+
+  <!-- ════════════ MAIN ════════════ -->
+  <main class="main">
+
+    <!-- ──── TAB: INTRODUCTION ──── -->
+    <div id="claude101" class="tab-content active">
+      <h1 class="page-title">Meet Claude.</h1>
+      <p class="page-subtitle">Not another chatbot. A thinking partner that asks better questions than it gives answers.</p>
+
+      <div class="wire-block" data-label="Hero Visual">
+        <p>Full-width visual — Claude interface screenshot or animated demo showing a conversation where Claude asks diagnostic questions instead of just answering</p>
+      </div>
+
+      <p>Claude is built by Anthropic. It's not trying to be everything to everyone — it's designed to think carefully, push back when your question is wrong, and build context over time.</p>
+
+      <p>If ChatGPT is the employee who says "yes" to everything, Claude is the strategist who asks "have you considered this?"</p>
+
+      <div class="callout">
+        <p><strong>The mindset shift:</strong> Claude isn't a search engine. It's not a content spinner. It's a thinking partner that gets smarter the more context you give it.</p>
+      </div>
+
+      <p>Over the next 90 minutes, you'll set up Claude, teach it who you are, and walk away with your first strategic document — built by AI that actually understands your business.</p>
+    </div>
+
+    <!-- ──── TAB: CHATGPT VS CLAUDE ──── -->
+    <div id="claude101-compare" class="tab-content">
+      <h1 class="page-title">ChatGPT vs Claude</h1>
+      <p class="page-subtitle">You've been using ChatGPT. Here's why the switch changes everything.</p>
+
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th style="width:35%">Feature</th>
+            <th style="width:32%">ChatGPT</th>
+            <th style="width:33%">Claude</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="feature-name">Conversation depth</td>
+            <td class="dim">Answers your question</td>
+            <td><strong>Questions your question first</strong></td>
+          </tr>
+          <tr>
+            <td class="feature-name">Business context</td>
+            <td class="dim">Custom GPTs (limited memory)</td>
+            <td><strong>Projects with persistent instructions</strong></td>
+          </tr>
+          <tr>
+            <td class="feature-name">Writing quality</td>
+            <td class="dim">Sounds like AI</td>
+            <td><strong>Learns your voice, pushes back on fluff</strong></td>
+          </tr>
+          <tr>
+            <td class="feature-name">Strategic thinking</td>
+            <td class="dim">Surface-level suggestions</td>
+            <td><strong>Diagnoses root problems</strong></td>
+          </tr>
+          <tr>
+            <td class="feature-name">Document creation</td>
+            <td class="dim">One-shot outputs</td>
+            <td><strong>Iterative, asks clarifying questions</strong></td>
+          </tr>
+          <tr>
+            <td class="feature-name">Pushback</td>
+            <td class="dim">Agrees with everything</td>
+            <td><strong>Challenges bad ideas constructively</strong></td>
+          </tr>
+          <tr>
+            <td class="feature-name">Context window</td>
+            <td class="dim">128K tokens</td>
+            <td><strong>200K tokens (sees more of your business)</strong></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="wire-block" data-label="Side-by-side Demo">
+        <p>Interactive comparison — same prompt sent to both ChatGPT and Claude. Shows the difference in depth and approach. Could be a static screenshot or animated toggle.</p>
+      </div>
+
+      <div class="callout">
+        <p><strong>The real difference:</strong> ChatGPT gives you what you asked for. Claude gives you what you actually need.</p>
+      </div>
+    </div>
+
+    <!-- ──── TAB: FEATURES ──── -->
+    <div id="claude101-features" class="tab-content">
+      <h1 class="page-title">What Can Claude Do?</h1>
+      <p class="page-subtitle">Everything you've been doing manually — but faster, deeper, and without the 2am burnout.</p>
+
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="card-icon">&#9998;</div>
+          <h4>Write Copy That Sounds Like You</h4>
+          <p>Not generic AI slop. Claude learns your voice, your rhythm, your words. Content that your audience thinks you wrote at 6am with a double espresso.</p>
+        </div>
+        <div class="feature-card">
+          <div class="card-icon">&#128736;</div>
+          <h4>Build SOPs & Systems Docs</h4>
+          <p>Turn the chaos in your head into documented, repeatable processes. Onboarding guides, delivery checklists, team handbooks.</p>
+        </div>
+        <div class="feature-card">
+          <div class="card-icon">&#128200;</div>
+          <h4>Analyse Your Business Data</h4>
+          <p>Paste in your numbers. Claude spots the patterns you missed and tells you what to do about them. No spreadsheet degree required.</p>
+        </div>
+        <div class="feature-card">
+          <div class="card-icon">&#127919;</div>
+          <h4>Create Marketing Strategies</h4>
+          <p>Content plans, campaign briefs, ad copy, email sequences — all tailored to your offer, your audience, and your voice.</p>
+        </div>
+        <div class="feature-card">
+          <div class="card-icon">&#128172;</div>
+          <h4>Draft Client Comms</h4>
+          <p>Proposals, follow-ups, difficult conversations. Claude handles the words so you can focus on the relationship.</p>
+        </div>
+        <div class="feature-card">
+          <div class="card-icon">&#129504;</div>
+          <h4>Think Through Problems</h4>
+          <p>Business model questions, pricing strategy, team structure, capacity planning. Claude thinks with you, not for you.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ──── TAB: MULTIPLYING TIME ──── -->
+    <div id="claude101-time" class="tab-content">
+      <h1 class="page-title">Multiplying Time</h1>
+      <p class="page-subtitle">You're not saving 30 minutes. You're buying back 10+ hours a week.</p>
+
+      <p>Every morning, Claude is my first team member. Before I open Slack, before I check email — I'm already building, planning, and creating with Claude.</p>
+
+      <h2 class="section-heading">The Before & After</h2>
+
+      <div class="time-grid">
+        <div class="time-card">
+          <div class="old-time">3 hours</div>
+          <div class="new-time">12 min</div>
+          <div class="task-name">Business Profile Document</div>
+        </div>
+        <div class="time-card">
+          <div class="old-time">2 hours</div>
+          <div class="new-time">15 min</div>
+          <div class="task-name">Client Onboarding SOP</div>
+        </div>
+        <div class="time-card">
+          <div class="old-time">4 hours</div>
+          <div class="new-time">20 min</div>
+          <div class="task-name">Landing Page (Design + Copy)</div>
+        </div>
+        <div class="time-card">
+          <div class="old-time">1.5 hours</div>
+          <div class="new-time">8 min</div>
+          <div class="task-name">Brand Guidelines</div>
+        </div>
+        <div class="time-card">
+          <div class="old-time">2 hours</div>
+          <div class="new-time">10 min</div>
+          <div class="task-name">Weekly Content Plan</div>
+        </div>
+        <div class="time-card">
+          <div class="old-time">5 hours</div>
+          <div class="new-time">30 min</div>
+          <div class="task-name">Full CRM Dashboard</div>
+        </div>
+      </div>
+
+      <div class="callout">
+        <p><strong>The compounding effect:</strong> Every document Claude builds makes the next one better. Your Business Profile feeds your ICP. Your ICP feeds your Offer Doc. Your Offer Doc feeds your content. It compounds.</p>
+      </div>
+
+      <div class="wire-block" data-label="Daily Workflow Visual">
+        <p>Timeline graphic showing Mario's daily Claude workflow — morning planning, document creation, strategy sessions, content production. Visual proof of the time multiplication concept.</p>
+      </div>
+    </div>
+
+    <!-- ──── TAB: ECOSYSTEM ──── -->
+    <div id="claude101-ecosystem" class="tab-content">
+      <h1 class="page-title">The Claude Ecosystem</h1>
+      <p class="page-subtitle">Three ways to use Claude. Start with one, grow into the rest.</p>
+
+      <div class="ecosystem-grid">
+        <div class="eco-card featured">
+          <span class="eco-badge start">Start Here</span>
+          <h4>Claude App</h4>
+          <p>The web interface at claude.ai. Conversations, Projects with persistent context, Artifacts that generate documents and code. This is where you'll spend 90% of your time.</p>
+        </div>
+        <div class="eco-card">
+          <span class="eco-badge collab">Collaborate</span>
+          <h4>Claude Cowork</h4>
+          <p>Work alongside Claude in real-time. Think of it as pair-working with an AI strategist who has full context of your business.</p>
+        </div>
+        <div class="eco-card">
+          <span class="eco-badge power">Power Tool</span>
+          <h4>Claude Code</h4>
+          <p>The terminal-based tool that builds actual software. This page you're looking at? Built with Claude Code. Dashboards, automations, integrations — all from a text prompt.</p>
+        </div>
+      </div>
+
+      <div class="callout">
+        <p><strong>Today we focus on the Claude App.</strong> That's your foundation. Once you're comfortable, Cowork and Code are there when you're ready to level up.</p>
+      </div>
+    </div>
+
+    <!-- ──── TAB: SHOWCASE ──── -->
+    <div id="showcase" class="tab-content">
+      <h1 class="page-title">What I've Built</h1>
+      <p class="page-subtitle">Everything you're about to see was built by me and Claude. I'm not a developer.</p>
+
+      <!-- APPS -->
+      <div class="showcase-category">
+        <div class="category-header">Apps & Dashboards</div>
+        <div class="showcase-grid">
+          <div class="showcase-card">
+            <div class="showcase-preview">
+              <span class="preview-label">Screenshot / iFrame</span>
+            </div>
+            <div class="showcase-info">
+              <h4>CRM Dashboard</h4>
+              <p>Tracks metrics across 50+ client locations. New contacts, intro offers, memberships, cancellations — all in real time.</p>
+              <span class="build-time">Built in 2 days</span>
+            </div>
+          </div>
+          <div class="showcase-card">
+            <div class="showcase-preview">
+              <span class="preview-label">Screenshot / iFrame</span>
+            </div>
+            <div class="showcase-info">
+              <h4>The Lighthouse</h4>
+              <p>Our AI operating system. Ingests all client data, scores health, generates coaching reports, and takes action autonomously.</p>
+              <span class="build-time">Built in 3 weeks</span>
+            </div>
+          </div>
+          <div class="showcase-card">
+            <div class="showcase-preview">
+              <span class="preview-label">Screenshot / iFrame</span>
+            </div>
+            <div class="showcase-info">
+              <h4>Onboarding Deck</h4>
+              <p>12-phase DWY onboarding system. 261 tasks, fully documented. Replaced a messy Google Doc with a polished interactive guide.</p>
+              <span class="build-time">Built in 1 day</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- LANDING PAGES -->
+      <div class="showcase-category">
+        <div class="category-header">Landing Pages for Clients</div>
+        <div class="showcase-grid" style="grid-template-columns: repeat(2, 1fr);">
+          <div class="showcase-card">
+            <div class="showcase-preview" style="height: 280px;">
+              <span class="preview-label">Superbad Marketing — Trial Shoot</span>
+            </div>
+            <div class="showcase-info">
+              <h4>Superbad Marketing</h4>
+              <p>Retro-bold trial shoot landing page for a Melbourne videography agency. Full conversion funnel with brand-matched design.</p>
+              <span class="build-time">Built in 1 session</span>
+            </div>
+          </div>
+          <div class="showcase-card">
+            <div class="showcase-preview" style="height: 280px;">
+              <span class="preview-label">STRONG Pilates — GLOWFLO Event</span>
+            </div>
+            <div class="showcase-info">
+              <h4>STRONG Pilates Coffs Harbour</h4>
+              <p>Neon 80s blacklight event page. RSVP form, schedule, prizes, social proof — completely different brand, same tool.</p>
+              <span class="build-time">Built in 1 session</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DOCUMENTS -->
+      <div class="showcase-category">
+        <div class="category-header">Documents — Built in 10 Days</div>
+        <div class="doc-list">
+          <div class="doc-item"><span class="doc-icon">&#128196;</span><span class="doc-name">Business Profile</span><span class="doc-date">7 Mar</span></div>
+          <div class="doc-item"><span class="doc-icon">&#128196;</span><span class="doc-name">DWY Offer Document</span><span class="doc-date">7 Mar</span></div>
+          <div class="doc-item"><span class="doc-icon">&#128196;</span><span class="doc-name">ICP — The Trapped Expert</span><span class="doc-date">8 Mar</span></div>
+          <div class="doc-item"><span class="doc-icon">&#128196;</span><span class="doc-name">Brand Guidelines</span><span class="doc-date">8 Mar</span></div>
+          <div class="doc-item"><span class="doc-icon">&#128196;</span><span class="doc-name">CS Handbook</span><span class="doc-date">8 Mar</span></div>
+          <div class="doc-item"><span class="doc-icon">&#128196;</span><span class="doc-name">Identity Blueprint</span><span class="doc-date">8 Mar</span></div>
+          <div class="doc-item"><span class="doc-icon">&#128196;</span><span class="doc-name">Copywriter Onboarding Guide</span><span class="doc-date">8 Mar</span></div>
+          <div class="doc-item"><span class="doc-icon">&#128196;</span><span class="doc-name">Onramp 6-Week Guide</span><span class="doc-date">8 Mar</span></div>
+          <div class="doc-item"><span class="doc-icon">&#128196;</span><span class="doc-name">ikigAI Founding Document</span><span class="doc-date">8 Mar</span></div>
+          <div class="doc-item"><span class="doc-icon">&#128196;</span><span class="doc-name">Mario Paguio Profile</span><span class="doc-date">7 Mar</span></div>
+          <div class="doc-item"><span class="doc-icon">&#128196;</span><span class="doc-name">Mario Style Guide</span><span class="doc-date">9 Mar</span></div>
+          <div class="doc-item"><span class="doc-icon">&#128196;</span><span class="doc-name">Ad Optimisation Manual</span><span class="doc-date">10 Mar</span></div>
+          <div class="doc-item"><span class="doc-icon">&#128196;</span><span class="doc-name">Migrating to Claude Guide</span><span class="doc-date">11 Mar</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ──── TAB: GETTING STARTED ──── -->
+    <div id="getting-started" class="tab-content">
+      <h1 class="page-title">Getting Started</h1>
+      <p class="page-subtitle">From zero to your first strategic document in 15 minutes.</p>
+
+      <h2 class="section-heading">Step 1: Create Your Account</h2>
+      <p>Go to claude.ai and sign up. We recommend Claude Pro ($20 USD/month) — it gives you more messages, access to the best models, and Projects.</p>
+
+      <div class="wire-block" data-label="Screenshot">
+        <p>Screenshot of claude.ai signup page with arrows pointing to key elements</p>
+      </div>
+
+      <h2 class="section-heading">Step 2: Set Up Your First Project</h2>
+      <p>Projects are Claude's superpower. They let you give Claude persistent context about your business — so every conversation starts with full knowledge of who you are, what you sell, and how you operate.</p>
+
+      <div class="wire-block" data-label="Screenshot">
+        <p>Screenshot showing how to create a new Project in Claude, with custom instructions panel highlighted</p>
+      </div>
+
+      <h2 class="section-heading">Step 3: Teach Claude Who You Are</h2>
+      <p>This is where the magic happens. Instead of migrating your ChatGPT history (don't bother), you'll let Claude build a better picture of you from scratch.</p>
+
+      <div class="callout">
+        <p><strong>The key insight:</strong> You don't need to bring your old conversations. Claude will build a better picture of you from scratch in 10 minutes than ChatGPT built in 6 months.</p>
+      </div>
+
+      <p>Start a conversation and let Claude ask you questions. It will search for information about your business online, then ask deeper clarifying questions to fill in the gaps.</p>
+
+      <h2 class="section-heading">Step 4: Build Your Foundation Documents</h2>
+      <p>Head to the Prompt Vault (next tab) and start with the Business Profile. Each document builds on the last.</p>
+
+      <div class="wire-block" data-label="Visual Flow">
+        <p>Flow diagram: Business Profile → ICP → Offer Doc → Brand Guidelines → Upload all to Project → Every future conversation starts with full context</p>
+      </div>
+    </div>
+
+    <!-- ──── TAB: PROMPT VAULT ──── -->
+    <div id="prompts" class="tab-content">
+      <h1 class="page-title">The Prompt Vault</h1>
+      <p class="page-subtitle">Engineered prompts that turn Claude into your strategic architect. Copy, paste, and let Claude lead.</p>
+
+      <div class="callout">
+        <p><strong>How these work:</strong> Each prompt instructs Claude to run a diagnostic conversation — asking you deep questions about your business before producing the document. Don't edit the prompts. Just paste them and answer honestly.</p>
+      </div>
+
+      <!-- PROMPT 1 -->
+      <div class="prompt-card">
+        <div class="prompt-number">01</div>
+        <h4>Business Profile</h4>
+        <p class="prompt-desc">Claude asks deep questions about your business model, revenue, team, delivery, positioning, origin story, and values. Produces a comprehensive profile you'll reference in every future conversation.</p>
+        <div class="prompt-block">
+          <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+          <pre>[Engineered prompt will go here — diagnostic-style, forces Claude to ask questions about business model, revenue streams, team structure, delivery method, competitive positioning, origin story, and operating values before producing the document]</pre>
+        </div>
+      </div>
+
+      <!-- PROMPT 2 -->
+      <div class="prompt-card">
+        <div class="prompt-number">02</div>
+        <h4>Ideal Client Profile</h4>
+        <p class="prompt-desc">Goes beyond demographics. Claude digs into psychographics, pain triggers, buying behaviour, objections, aspirations, and why they chose you.</p>
+        <div class="prompt-block">
+          <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+          <pre>[Engineered prompt will go here — diagnostic-style, forces Claude to ask about demographics, psychographics, pain triggers, buying behaviour, objections, aspirations, where they hang out, what they've tried before, and why they chose you]</pre>
+        </div>
+      </div>
+
+      <!-- PROMPT 3 -->
+      <div class="prompt-card">
+        <div class="prompt-number">03</div>
+        <h4>Offer Document</h4>
+        <p class="prompt-desc">Claude walks through your offer architecture: the transformation, the mechanism, the deliverables, pricing logic, objection handling, and positioning.</p>
+        <div class="prompt-block">
+          <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+          <pre>[Engineered prompt will go here — diagnostic-style, walks through offer architecture, transformation promise, mechanism, deliverables, pricing logic, objection handling, and competitive positioning]</pre>
+        </div>
+      </div>
+
+      <!-- PROMPT 4 -->
+      <div class="prompt-card">
+        <div class="prompt-number">04</div>
+        <h4>Brand Guidelines</h4>
+        <p class="prompt-desc">Claude extracts your voice, tone, visual preferences, language patterns, words you love, words you'd never say, and how you want to show up.</p>
+        <div class="prompt-block">
+          <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+          <pre>[Engineered prompt will go here — diagnostic-style, extracts voice, tone, visual preferences, language patterns, favourite words, banned words, communication style, and brand personality]</pre>
+        </div>
+      </div>
+
+      <!-- PROMPT 5 -->
+      <div class="prompt-card">
+        <div class="prompt-number">05</div>
+        <h4>Claude Quick-Start Instructions</h4>
+        <p class="prompt-desc">The meta-prompt. Once you've built the 4 documents above, this prompt helps you load them all into a Claude Project so every future conversation starts with full context.</p>
+        <div class="prompt-block">
+          <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+          <pre>[Engineered prompt will go here — instructs user on how to create a Project, add custom instructions, and upload all 4 documents as context so every new conversation inherits full business knowledge]</pre>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+</div>
+
+<script>
+  function showTab(tabId) {
+    // Hide all tabs
+    document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+    // Remove active from nav
+    document.querySelectorAll('.sidebar-nav a').forEach(a => a.classList.remove('active'));
+    // Show target
+    document.getElementById(tabId).classList.add('active');
+    // Set active nav
+    event.preventDefault();
+    event.target.closest('a').classList.add('active');
+    // Scroll to top
+    window.scrollTo(0, 0);
+  }
+
+  function copyPrompt(btn) {
+    const pre = btn.parentElement.querySelector('pre');
+    navigator.clipboard.writeText(pre.textContent).then(() => {
+      btn.textContent = 'Copied!';
+      setTimeout(() => btn.textContent = 'Copy', 2000);
+    });
+  }
+</script>
+
+</body>
+</html>
