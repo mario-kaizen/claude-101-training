@@ -127,7 +127,7 @@
     display: flex;
     align-items: center;
     gap: 14px;
-    padding: 12px 32px;
+    padding: 14px 32px;
     color: rgba(245,240,232,0.5);
     text-decoration: none;
     font-size: 14px;
@@ -136,6 +136,10 @@
     transition: all 0.25s var(--ease-out);
     border-left: 3px solid transparent;
     position: relative;
+    -webkit-tap-highlight-color: rgba(201,168,76,0.15);
+    touch-action: manipulation;
+    cursor: pointer;
+    min-height: 44px;
   }
 
   .nav-items a:hover {
@@ -3730,8 +3734,14 @@
       width: 280px;
       transition: transform 0.35s var(--ease-out);
       z-index: 200;
+      -webkit-overflow-scrolling: touch;
+      overscroll-behavior: contain;
     }
     .sidebar.open { transform: translateX(0); }
+    .nav-items a {
+      padding: 16px 32px;
+      min-height: 48px;
+    }
     .mobile-toggle {
       display: flex !important;
     }
@@ -3808,19 +3818,21 @@
   .mobile-toggle {
     display: none;
     position: fixed;
-    top: 16px;
-    left: 16px;
-    z-index: 120;
-    width: 44px;
-    height: 44px;
+    top: 12px;
+    left: 12px;
+    z-index: 250;
+    width: 48px;
+    height: 48px;
     background: var(--charcoal);
-    border: none;
+    border: 1px solid rgba(255,255,255,0.1);
     border-radius: 2px;
     color: var(--cream);
-    font-size: 20px;
+    font-size: 22px;
     cursor: pointer;
     align-items: center;
     justify-content: center;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: rgba(201,168,76,0.2);
   }
 
   /* ══════════════════════════════════════════════════
@@ -7052,42 +7064,50 @@ This is a relationship moment. No "we wish you all the best in your future endea
 
 <script>
   // Tab navigation
-  document.querySelectorAll('.nav-items a').forEach(link => {
-    link.addEventListener('click', e => {
-      e.preventDefault();
-      const tabId = link.dataset.tab;
+  function handleNavClick(e, link) {
+    e.preventDefault();
+    e.stopPropagation();
+    const tabId = link.dataset.tab;
+    if (!tabId) return;
 
-      // Update nav
-      document.querySelectorAll('.nav-items a').forEach(a => a.classList.remove('active'));
-      link.classList.add('active');
+    // Update nav
+    document.querySelectorAll('.nav-items a').forEach(a => a.classList.remove('active'));
+    link.classList.add('active');
 
-      // Update panels
-      document.querySelectorAll('.panel').forEach(p => {
-        p.classList.remove('active');
-        p.style.display = 'none';
-        p.style.opacity = '0';
-        p.style.transform = 'translateY(12px)';
-      });
-
-      const panel = document.getElementById(tabId);
-      panel.style.display = 'block';
-      // Force reflow
-      panel.offsetHeight;
-      panel.classList.add('active');
-
-      // Trigger reveals
-      setTimeout(() => {
-        panel.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
-      }, 100);
-
-      // Scroll to top
-      window.scrollTo({ top: 0, behavior: 'instant' });
-
-      // Close mobile sidebar
-      document.getElementById('sidebar').classList.remove('open');
-      document.querySelector('.overlay').classList.remove('open');
+    // Update panels
+    document.querySelectorAll('.panel').forEach(p => {
+      p.classList.remove('active');
+      p.style.display = 'none';
+      p.style.opacity = '0';
+      p.style.transform = 'translateY(12px)';
     });
+
+    const panel = document.getElementById(tabId);
+    if (!panel) return;
+    panel.style.display = 'block';
+    panel.offsetHeight;
+    panel.classList.add('active');
+
+    setTimeout(() => {
+      panel.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
+    }, 100);
+
+    window.scrollTo({ top: 0, behavior: 'instant' });
+
+    // Close mobile sidebar
+    document.getElementById('sidebar').classList.remove('open');
+    document.querySelector('.overlay').classList.remove('open');
+  }
+
+  document.querySelectorAll('.nav-items a').forEach(link => {
+    link.addEventListener('click', e => handleNavClick(e, link));
+    // Also handle touchend for mobile reliability
+    link.addEventListener('touchend', e => {
+      e.preventDefault();
+      handleNavClick(e, link);
+    }, { passive: false });
   });
+
 
   // Copy prompt
   function copyPrompt(btn) {
