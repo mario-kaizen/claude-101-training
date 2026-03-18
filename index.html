@@ -3737,35 +3737,40 @@
     .sidebar {
       position: fixed;
       top: 0;
-      left: 0;
+      left: -260px;
       bottom: 0;
-      width: 280px;
+      width: 260px;
       z-index: 200;
-      /* Use left positioning instead of transform for iOS scroll compatibility */
-      left: -280px;
       transform: none;
-      transition: left 0.35s var(--ease-out);
+      transition: left 0.3s ease-out;
+      display: block;
       overflow-y: scroll;
       -webkit-overflow-scrolling: touch;
-      overscroll-behavior-y: contain;
     }
     .sidebar.open {
       left: 0;
     }
-    .sidebar-footer {
-      padding: 20px 32px 40px;
-      margin-top: 24px;
-      flex-shrink: 0;
+    .sidebar-brand {
+      padding: 24px 24px 20px;
+    }
+    .sidebar-brand h1 {
+      font-size: 22px;
     }
     .nav-group {
-      flex-shrink: 0;
+      padding: 12px 0 4px;
     }
-    .sidebar-brand {
-      flex-shrink: 0;
+    .nav-label {
+      padding: 0 24px 6px;
+      font-size: 9px;
+    }
+    .sidebar-footer {
+      padding: 16px 24px 32px;
+      margin-top: 12px;
     }
     .nav-items a {
-      padding: 16px 32px;
-      min-height: 48px;
+      padding: 11px 24px;
+      min-height: 44px;
+      font-size: 13px;
     }
     .mobile-toggle {
       display: flex !important;
@@ -7120,9 +7125,13 @@ This is a relationship moment. No "we wish you all the best in your future endea
 
     window.scrollTo({ top: 0, behavior: 'instant' });
 
-    // Close mobile sidebar
+    // Close mobile sidebar and unlock body scroll
     document.getElementById('sidebar').classList.remove('open');
     document.querySelector('.overlay').classList.remove('open');
+    document.body.style.overflow = '';
+    document.body.style.position = '';
+    document.body.style.width = '';
+    document.body.style.top = '';
   }
 
   document.querySelectorAll('.nav-items a').forEach(link => {
@@ -7154,8 +7163,27 @@ This is a relationship moment. No "we wish you all the best in your future endea
 
   // Mobile sidebar
   function toggleSidebar() {
-    document.getElementById('sidebar').classList.toggle('open');
-    document.querySelector('.overlay').classList.toggle('open');
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.querySelector('.overlay');
+    const isOpen = sidebar.classList.contains('open');
+
+    sidebar.classList.toggle('open');
+    overlay.classList.toggle('open');
+
+    // Lock body scroll when sidebar is open
+    if (!isOpen) {
+      document.body.style.overflow = 'hidden';
+      document.body.style.position = 'fixed';
+      document.body.style.width = '100%';
+      document.body.dataset.scrollY = window.scrollY;
+      document.body.style.top = `-${window.scrollY}px`;
+    } else {
+      document.body.style.overflow = '';
+      document.body.style.position = '';
+      document.body.style.width = '';
+      document.body.style.top = '';
+      window.scrollTo(0, parseInt(document.body.dataset.scrollY || '0'));
+    }
   }
 
   // Scroll reveal (Intersection Observer)
