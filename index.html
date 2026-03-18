@@ -3739,15 +3739,19 @@
       top: 0;
       left: 0;
       bottom: 0;
-      transform: translateX(-100%);
       width: 280px;
-      transition: transform 0.35s var(--ease-out);
       z-index: 200;
-      overflow-y: auto;
+      /* Use left positioning instead of transform for iOS scroll compatibility */
+      left: -280px;
+      transform: none;
+      transition: left 0.35s var(--ease-out);
+      overflow-y: scroll;
       -webkit-overflow-scrolling: touch;
-      overscroll-behavior: contain;
+      overscroll-behavior-y: contain;
     }
-    .sidebar.open { transform: translateX(0); }
+    .sidebar.open {
+      left: 0;
+    }
     .sidebar-footer {
       padding: 20px 32px 40px;
       margin-top: 24px;
@@ -7123,11 +7127,6 @@ This is a relationship moment. No "we wish you all the best in your future endea
 
   document.querySelectorAll('.nav-items a').forEach(link => {
     link.addEventListener('click', e => handleNavClick(e, link));
-    // Also handle touchend for mobile reliability
-    link.addEventListener('touchend', e => {
-      e.preventDefault();
-      handleNavClick(e, link);
-    }, { passive: false });
   });
 
 
