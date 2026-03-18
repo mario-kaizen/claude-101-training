@@ -6579,10 +6579,197 @@ Keep the template tight enough to fill in within 10 minutes. Add brief guidance 
     <button class="prompt-toggle" onclick="togglePrompt('pb-ops-6', this)">&#9660; Show full prompt</button>
   </div>
 
+  <!-- ═══ STRATEGY & THINKING ═══ -->
+  <h2 class="section-title" style="margin-top:96px;">Strategy &amp; <em style="color:var(--gold);font-style:italic;">Thinking</em></h2>
+  <p class="section-sub">Like having a $500/hour consultant who already knows your business. Use these when you need to think, not just do.</p>
+
+  <div class="prompt-card reveal">
+    <div class="prompt-num">01</div>
+    <h4>Pressure-Test My Idea</h4>
+    <p class="prompt-desc">Describe any business idea, decision, or plan and Claude plays devil's advocate — finding holes, challenging assumptions, stress-testing the logic. Use before making any significant move.</p>
+    <div class="prompt-block collapsed" id="pb-strat-1">
+      <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+      <pre>I'm considering the following idea/decision for my business:
+
+[Describe your idea, plan, or decision in detail — what you want to do, why, and what you think the outcome will be]
+
+Using what you know about my business, my ICP, my current offer, and my brand positioning from this Project, pressure-test this idea. Act as a trusted senior advisor — not a yes-man.
+
+Specifically:
+1. Assumptions Check — What assumptions am I making that might not hold? Challenge each one.
+2. Downside Scenarios — What's the realistic worst case? What breaks first?
+3. Opportunity Cost — What am I saying NO to by saying yes to this? Is this the highest-leverage move right now?
+4. Execution Reality — Do I have the time, team, cash, and systems to pull this off without dropping the ball on what's already working?
+5. The Blind Spot — What's the one thing I'm probably not considering because I'm too close to it?
+6. Final Verdict — If you were my business partner with skin in the game, would you green-light this, modify it, or kill it? Be direct.
+
+Be specific to MY business — reference my actual numbers, capacity, audience, and market position.</pre>
+    </div>
+    <button class="prompt-toggle" onclick="togglePrompt('pb-strat-1', this)">&#9660; Show full prompt</button>
+  </div>
+
+  <div class="prompt-card reveal">
+    <div class="prompt-num">02</div>
+    <h4>Quarterly Planning Session</h4>
+    <p class="prompt-desc">A structured 90-day planning session that builds a prioritised roadmap from where you are to where you want to be. Use at the start of each quarter or when you're busy but not progressing.</p>
+    <div class="prompt-block collapsed" id="pb-strat-2">
+      <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+      <pre>I want to run a quarterly planning session. Here's my current state:
+
+- Revenue: [current monthly revenue]
+- Client count: [number of active clients/members]
+- Team: [who's on the team and their roles]
+- Biggest win last quarter: [what went well]
+- Biggest frustration: [what didn't work or what's dragging]
+- Where I want to be in 90 days: [revenue target, client target, lifestyle goal, or key milestone]
+
+Using what you know about my business, offer, and market from this Project, produce:
+
+1. Gap Analysis — The specific gap between where I am and where I want to be, broken into revenue gap, capacity gap, and capability gap.
+2. The 3-5 Needle Movers — The highest-leverage priorities for this quarter. Not a 20-item to-do list. The critical few that drive 80% of the result.
+3. 90-Day Milestone Map — Month 1 / Month 2 / Month 3 breakdown with specific targets.
+4. Key Metrics Dashboard — The 5-7 numbers I should track weekly. Include current number and target.
+5. Risk Flags — What could derail this plan and what's the contingency?
+6. Weekly Rhythm — What should my ideal week look like to execute on this plan?
+
+Format as a clean planning document I can reference every week.</pre>
+    </div>
+    <button class="prompt-toggle" onclick="togglePrompt('pb-strat-2', this)">&#9660; Show full prompt</button>
+  </div>
+
+  <div class="prompt-card reveal">
+    <div class="prompt-num">03</div>
+    <h4>Pricing Strategy Workshop</h4>
+    <p class="prompt-desc">Deep analysis of your current pricing with specific recommendations for restructuring, raising rates, or adding tiers. Use when you suspect you're undercharging or need to restructure packages.</p>
+    <div class="prompt-block collapsed" id="pb-strat-3">
+      <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+      <pre>I want to rethink my pricing. Here's what's prompting this:
+
+[Describe what's happening — undercharging? Losing clients on price? Want a premium tier? Margins thin?]
+
+My current pricing structure:
+[List your current packages/services and their prices]
+
+Using what you know about my offer, ICP, and brand positioning from this Project, cover:
+
+1. Current Model Diagnosis — What's working and broken? Am I leaving money on the table?
+2. Value vs. Price Alignment — Based on the transformation I deliver, am I priced correctly?
+3. Pricing Architecture — Recommend a specific structure with exact numbers and logic for each tier.
+4. Competitive Context — Where should I sit in my market? Premium, value, or stuck in the middle?
+5. The Rollout Plan — How to implement without losing current clients. Include communication scripts.
+6. Revenue Impact Model — At my current client volume, what does this change do to monthly revenue?
+
+Give me specific numbers, not theory.</pre>
+    </div>
+    <button class="prompt-toggle" onclick="togglePrompt('pb-strat-3', this)">&#9660; Show full prompt</button>
+  </div>
+
+  <div class="prompt-card reveal">
+    <div class="prompt-num">04</div>
+    <h4>New Offer Design</h4>
+    <p class="prompt-desc">Design a new product, service, or program from scratch — transformation, mechanism, deliverables, pricing, positioning. Use when you want to launch something new or restructure an existing offer.</p>
+    <div class="prompt-block collapsed" id="pb-strat-4">
+      <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+      <pre>I want to design a new offer. Here's the rough idea:
+
+- What it is: [brief description]
+- Who it's for: [who you think the buyer is]
+- Why now: [market demand, capacity, revenue goal, client requests?]
+- Price range I'm thinking: [if you have one, or "not sure"]
+
+Using what you know about my business, brand, ICP, and existing offers from this Project, build a complete offer blueprint:
+
+1. The Transformation — Specific before/after state in the buyer's language
+2. The Mechanism — The unique method that delivers this result differently from alternatives
+3. Deliverables &amp; Structure — Exactly what they get. Duration, format, frequency, access, support.
+4. Pricing &amp; Packaging — Recommended price with logic and payment options
+5. Ideal Buyer Profile — Perfect buyer's situation, budget, readiness. Who is this NOT for?
+6. Positioning &amp; Messaging — One-liner, headline, and 3 key selling points in my voice
+7. Cannibalisation Check — Does this compete with my existing offers? How does it fit?
+8. Go-to-Market Plan — Simplest path to first 10 sales. Channels, messaging, timeline.
+
+Format as a one-page offer blueprint I can hand to my team.</pre>
+    </div>
+    <button class="prompt-toggle" onclick="togglePrompt('pb-strat-4', this)">&#9660; Show full prompt</button>
+  </div>
+
+  <div class="prompt-card reveal">
+    <div class="prompt-num">05</div>
+    <h4>Revenue &amp; Capacity Model</h4>
+    <p class="prompt-desc">Input your numbers and Claude builds a projection model showing where you're headed, what levers to pull, and which single change gives the biggest return. Use for financial clarity.</p>
+    <div class="prompt-block collapsed" id="pb-strat-5">
+      <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+      <pre>Here are my current business numbers:
+
+- Monthly revenue: $[amount]
+- Active clients/members: [number]
+- Average revenue per client per month: $[amount]
+- New clients per month: [number]
+- Client churn per month: [number or %]
+- Current capacity: [max clients with current setup]
+- Monthly expenses (approx): $[amount]
+- Team size: [number]
+
+Using what you know about my business model from this Project, build me a revenue and capacity model:
+
+1. Current Trajectory — Where am I in 3, 6, and 12 months if nothing changes? Revenue, clients, profit. Be honest.
+2. The 5 Growth Levers — Model each independently:
+   - Price increase (+10%, +20%) — revenue impact and churn risk
+   - Volume increase (+2, +5 new clients/month) — what it takes
+   - Retention improvement (reduce churn by 25%, 50%) — 12-month revenue impact
+   - Upsell/cross-sell (add $X/client/month) — realistic options
+   - Capacity expansion (add staff, extend hours) — cost vs. revenue unlock
+3. Highest-Impact Lever — Which ONE lever gives the most gain for least effort right now? Why?
+4. The Bottleneck — What's the binding constraint? Leads, conversion, capacity, team, or cash?
+5. Scenario Comparison Table — Status Quo vs. Best Single Lever vs. Combined — at 3, 6, 12 months.
+
+Use my actual numbers. Show your math.</pre>
+    </div>
+    <button class="prompt-toggle" onclick="togglePrompt('pb-strat-5', this)">&#9660; Show full prompt</button>
+  </div>
+
+  <div class="prompt-card reveal">
+    <div class="prompt-num">06</div>
+    <h4>"What Am I Not Seeing?"</h4>
+    <p class="prompt-desc">The signature diagnostic prompt. When you feel stuck, overwhelmed, or plateaued but can't pinpoint why — describe your situation and Claude runs it through six diagnostic filters to surface the real constraint. The one you're not acknowledging.</p>
+    <div class="prompt-block collapsed" id="pb-strat-6">
+      <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+      <pre>I feel stuck and I need a fresh perspective. Here's what's going on:
+
+[Describe your current situation honestly — what's frustrating you, what feels hard, what you've tried, what's not working. Don't filter it. Stream of consciousness is fine.]
+
+Using everything you know about my business, market, offer, and positioning from this Project, run a full diagnostic. Don't just address what I've told you — look for what I'm NOT telling you. The visible problem is rarely the real problem.
+
+Run my situation through these 6 filters, one at a time:
+
+1. Identity Filter — Am I operating as the person who already has the business I say I want? Or am I clinging to an old identity that's creating the ceiling? What identity shift would dissolve this problem?
+
+2. Beliefs Filter — What belief am I treating as fact that's actually just a story? Look for "I can't because..." or "My market won't..." Name the limiting belief and reframe it.
+
+3. Systems Filter — Is this a people problem or a systems problem? Where's the actual bottleneck in my business engine? What's the highest-leverage fix?
+
+4. Capacity Filter — Am I trying to grow a $[X] business with a $[Y] infrastructure? Is there a mismatch between my ambition and my actual capacity?
+
+5. Market &amp; Offer Filter — Is my offer still aligned with what my market wants right now? Am I solving a problem people will pay to fix?
+
+6. Execution Filter — Am I stuck because I don't know what to do, or because I'm not doing what I already know? Is this a strategy problem or a discipline problem?
+
+After all 6 filters, give me:
+
+- The Real Problem — In 1-2 sentences, name the actual constraint.
+- The Level It Lives On — Identity, belief, systems, capacity, market, or execution?
+- The One Move — ONE thing I can do in the next 7 days to break through. Specific and actionable.
+- The Hard Truth — Tell me the thing I probably don't want to hear but need to. Be direct.
+
+This is a coaching conversation, not a pep talk. Challenge me where I need it.</pre>
+    </div>
+    <button class="prompt-toggle" onclick="togglePrompt('pb-strat-6', this)">&#9660; Show full prompt</button>
+  </div>
+
   <!-- More sections coming soon -->
   <div style="margin-top:72px;padding:40px;background:var(--parchment);border-radius:2px;text-align:center;">
     <p style="font-family:var(--font-display);font-size:22px;font-weight:700;color:var(--ink);margin-bottom:8px;">More Sections Coming Soon</p>
-    <p style="color:var(--stone);font-size:15px;margin:0;">Strategy &amp; Thinking &bull; Client Communication</p>
+    <p style="color:var(--stone);font-size:15px;margin:0;">Client Communication</p>
   </div>
 
 </section>
