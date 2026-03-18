@@ -4424,6 +4424,7 @@
       <li><a href="#" data-tab="start"><span class="nav-icon">&#9654;</span> Getting Started</a></li>
       <li><a href="#" data-tab="tryit"><span class="nav-icon">&#9889;</span> Try It Now</a></li>
       <li><a href="#" data-tab="prompts"><span class="nav-icon">&#9998;</span> The Prompt Vault</a></li>
+      <li><a href="#" data-tab="playbook"><span class="nav-icon">&#128218;</span> Daily Playbook</a></li>
       <li><a href="#" data-tab="whats-next"><span class="nav-icon">&#10140;</span> What's Next</a></li>
     </ul>
   </div>
@@ -6114,6 +6115,186 @@ Rewrite the [section/document/strategy] with this as the central focus.</pre>
   <div class="compare-bridge" style="margin-top: 72px;">
     <p>You've built the foundation. Now see what it unlocks.</p>
     <a href="#" onclick="event.preventDefault(); document.querySelector('[data-tab=whats-next]').click();">What's Next &rarr;</a>
+  </div>
+
+</section>
+
+<!-- ── DAILY PLAYBOOK ── -->
+<section id="playbook" class="panel">
+  <h1 class="page-title">The Daily <em>Playbook.</em></h1>
+  <p class="page-sub">Short, sharp prompts for the work you do every week. These are designed to be used inside your Project — Claude already has your context. Just copy, paste, and go.</p>
+
+  <div class="callout">
+    <p><strong>These are different from the Prompt Vault.</strong> The Vault builds your foundation documents (one-time setup). The Playbook is what you use daily — content, sales, ops, strategy. Each prompt assumes your Business Profile, ICP, Offer Doc, and Brand Guidelines are already loaded in your Project.</p>
+  </div>
+
+  <!-- ═══ CONTENT & MARKETING ═══ -->
+  <h2 class="section-title">Content &amp; <em style="color:var(--gold);font-style:italic;">Marketing</em></h2>
+  <p class="section-sub">The prompts you'll reach for most. Content that sounds like you, not like AI.</p>
+
+  <!-- 1. Weekly Content Plan -->
+  <div class="prompt-card reveal">
+    <div class="prompt-num">01</div>
+    <h4>Weekly Content Plan</h4>
+    <p class="prompt-desc">Generates seven days of Instagram content ideas built around your actual offer, your actual audience, and what's happening in your business right now. Use it Sunday night or Monday morning.</p>
+    <div class="prompt-block collapsed" id="pb-content-1">
+      <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+      <pre>Write me a 7-day Instagram content plan for this week.
+
+Use my ICP, current offers, and brand voice from this Project. Every post idea should connect back to a specific pain point, desire, or objection my audience actually has — no generic "motivation Monday" filler.
+
+For each day, give me:
+- Content format (reel, carousel, static, story sequence)
+- The specific angle or hook
+- A one-line description of the post
+- Which part of my offer or methodology it ties back to
+
+Mix educational, personal/behind-the-scenes, and direct CTA posts across the week. At least 2 should be the kind of post that makes someone DM me or click my link.
+
+Do not suggest any content that could come from any business in my industry. Every idea should only make sense coming from MY business, referencing MY specific audience and what I actually deliver.</pre>
+    </div>
+    <button class="prompt-toggle" onclick="togglePrompt('pb-content-1', this)">&#9660; Show full prompt</button>
+  </div>
+
+  <!-- 2. Instagram Caption Writer -->
+  <div class="prompt-card reveal">
+    <div class="prompt-num">02</div>
+    <h4>Instagram Caption Writer</h4>
+    <p class="prompt-desc">Writes a ready-to-post caption in your voice. Tell it what you're posting and it does the rest — hook, body, CTA, formatted properly. Use it when you're staring at a blank caption box.</p>
+    <div class="prompt-block collapsed" id="pb-content-2">
+      <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+      <pre>Write me an Instagram caption for this post:
+
+[Describe what you're posting — photo, video, carousel, what it shows or covers]
+
+Use my brand voice and guidelines from this Project. The caption should sound exactly like me talking to my audience — not like a copywriter, not like AI.
+
+Structure it as:
+- A hook (first line that stops the scroll — short, punchy, specific to my audience)
+- Body (3-6 short paragraphs that deliver value or tell a story — use line breaks between each)
+- CTA (one clear call to action that fits what I'm currently offering)
+- 3-5 hashtags max, relevant to my niche and location
+
+Every sentence must pass this test: "Would I actually say this out loud to a client?" If the answer is no, rewrite it. Do not use any phrases that aren't in my brand voice.</pre>
+    </div>
+    <button class="prompt-toggle" onclick="togglePrompt('pb-content-2', this)">&#9660; Show full prompt</button>
+  </div>
+
+  <!-- 3. Email Sequence Builder -->
+  <div class="prompt-card reveal">
+    <div class="prompt-num">03</div>
+    <h4>Email Sequence Builder</h4>
+    <p class="prompt-desc">Creates a full multi-email sequence with subject lines, body copy, and CTAs — all in your voice. Use it for welcome sequences, launch runways, re-engagement campaigns, or anything that needs multiple emails working together.</p>
+    <div class="prompt-block collapsed" id="pb-content-3">
+      <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+      <pre>Build me an email sequence for: [describe the purpose — e.g., "welcome sequence for new quiz leads," "4-email launch for my January challenge," "re-engagement for people who haven't opened in 60 days"]
+
+Use my brand voice, ICP, and offer details from this Project. Every email should sound like a personal message from me, not a marketing newsletter.
+
+For each email, give me:
+- Email number and send timing (e.g., Email 1 — immediately, Email 2 — Day 2)
+- Subject line (plus one alternative subject line)
+- Preview text
+- Full body copy, written in my voice with short paragraphs
+- One clear CTA per email
+- A brief note on the strategic purpose of that email in the sequence (what it's doing psychologically)
+
+The sequence should have a logical emotional arc — don't just repeat the same pitch in different words. Each email should earn the right to send the next one. Reference specific problems my ICP faces and specific outcomes my offer delivers. Nothing generic.</pre>
+    </div>
+    <button class="prompt-toggle" onclick="togglePrompt('pb-content-3', this)">&#9660; Show full prompt</button>
+  </div>
+
+  <!-- 4. Ad Copy Generator -->
+  <div class="prompt-card reveal">
+    <div class="prompt-num">04</div>
+    <h4>Ad Copy Generator</h4>
+    <p class="prompt-desc">Creates three variations of Meta ad copy — primary text, headline, and description — each hitting a different psychological angle. Use it when you're launching a campaign and need options to test.</p>
+    <div class="prompt-block collapsed" id="pb-content-4">
+      <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+      <pre>Write me 3 variations of Meta ad copy for: [describe the campaign — what you're promoting, who it's targeting, where they land]
+
+Use my ICP, offer details, and brand voice from this Project. Each variation should hit a different psychological angle:
+
+1. Pain angle — lead with the frustration or problem my audience is living with right now
+2. Aspiration angle — lead with the outcome or transformation they want
+3. Proof angle — lead with a result, testimonial theme, or credibility marker
+
+For each variation, give me:
+- Primary text (2-4 short paragraphs — hook must stop the scroll in the first line)
+- Headline (under 40 characters, punchy)
+- Description (one line, supports the headline)
+
+Write the primary text like I'm talking directly to one person, not broadcasting to an audience. No ad-speak. No "Are you a [type of person] who [pain point]?" openers — that format is dead. Make the hook feel like something they'd overhear and lean in to listen.
+
+Every line should reference something specific to my business, my audience, or my local area — nothing that could be copy-pasted onto a competitor's ad.</pre>
+    </div>
+    <button class="prompt-toggle" onclick="togglePrompt('pb-content-4', this)">&#9660; Show full prompt</button>
+  </div>
+
+  <!-- 5. Content Repurposer -->
+  <div class="prompt-card reveal">
+    <div class="prompt-num">05</div>
+    <h4>Content Repurposer</h4>
+    <p class="prompt-desc">Takes one long piece of content and breaks it into a week's worth of social posts, email snippets, and quote graphics. Use it when you've recorded a podcast, written a blog, or run a training and want to squeeze every drop of value out of it.</p>
+    <div class="prompt-block collapsed" id="pb-content-5">
+      <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+      <pre>Here's a piece of long-form content I created. Break it down into repurposed content pieces, all in my brand voice:
+
+---
+[Paste your content here — blog post, podcast transcript, training notes, long video script]
+---
+
+Using my brand voice and ICP from this Project, extract and create:
+
+1. 5-7 Instagram posts — each one a standalone idea from the original content. Give me the hook, a brief caption outline (3-4 lines), and the format (reel script, carousel slides, static quote). Each post should make sense on its own without needing the original.
+
+2. 2-3 email snippets — short value-packed paragraphs I can drop into my next few emails, each ending with a natural segue to my offer or CTA.
+
+3. 3-5 quote graphics — pull the most quotable, screenshot-worthy lines. Clean them up so they hit hard as standalone text on an image. Keep them under 20 words each.
+
+Don't just chop the content into smaller pieces. Reframe each piece for the platform it's going on. A carousel teaches differently than a reel. An email reads differently than a caption. Adapt the angle and format, not just the length.</pre>
+    </div>
+    <button class="prompt-toggle" onclick="togglePrompt('pb-content-5', this)">&#9660; Show full prompt</button>
+  </div>
+
+  <!-- 6. Competitor Content Audit -->
+  <div class="prompt-card reveal">
+    <div class="prompt-num">06</div>
+    <h4>Competitor Content Audit</h4>
+    <p class="prompt-desc">Paste a competitor's content and get a breakdown of what's working, what's weak, and a better version written in your voice and positioning. Use it when you see a competitor doing well and want to understand why — then do it better.</p>
+    <div class="prompt-block collapsed" id="pb-content-6">
+      <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+      <pre>Here's a piece of content from a competitor in my space. Audit it, then write a better version in my voice:
+
+---
+[Paste the competitor content here — ad copy, Instagram caption, website copy, email]
+---
+
+Using my brand voice, ICP, and offer positioning from this Project, do three things:
+
+1. Audit (what's working and what's not)
+- What's the hook doing well (or not)?
+- What psychological triggers are they using?
+- Where does the copy lose energy or get generic?
+- What's their implicit positioning vs. mine?
+- What audience objections does it miss?
+
+2. Gap analysis (where I can win)
+- What can I say that they can't, based on my unique positioning, experience, and offer?
+- What does my ICP care about that this content ignores?
+
+3. My version
+- Rewrite the concept (not the exact copy) in my brand voice and from my positioning. Same general topic, completely different execution. It should be obvious this came from my business, not theirs.
+
+Do not copy their structure or phrases. I want to understand their strategy, then beat it with mine.</pre>
+    </div>
+    <button class="prompt-toggle" onclick="togglePrompt('pb-content-6', this)">&#9660; Show full prompt</button>
+  </div>
+
+  <!-- More sections coming soon -->
+  <div style="margin-top:72px;padding:40px;background:var(--parchment);border-radius:2px;text-align:center;">
+    <p style="font-family:var(--font-display);font-size:22px;font-weight:700;color:var(--ink);margin-bottom:8px;">More Sections Coming Soon</p>
+    <p style="color:var(--stone);font-size:15px;margin:0;">Sales &amp; Conversion &bull; Operations &amp; Systems &bull; Strategy &amp; Thinking &bull; Client Communication</p>
   </div>
 
 </section>
