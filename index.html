@@ -3737,35 +3737,36 @@
     .sidebar {
       position: fixed;
       top: 0;
-      left: -260px;
+      left: 0;
+      right: 0;
       bottom: 0;
-      width: 260px;
+      width: 100%;
       z-index: 200;
-      transform: none;
-      transition: left 0.3s ease-out;
-      display: block;
-      overflow-y: scroll;
+      display: none;
+      overflow-y: auto;
       -webkit-overflow-scrolling: touch;
+      background: var(--charcoal);
     }
     .sidebar.open {
-      left: 0;
+      display: flex;
+      flex-direction: column;
     }
     .sidebar-brand {
-      padding: 24px 24px 20px;
+      padding: 64px 32px 20px;
     }
     .sidebar-brand h1 {
-      font-size: 22px;
+      font-size: 24px;
     }
     .nav-group {
       padding: 12px 0 4px;
     }
     .nav-label {
-      padding: 0 24px 6px;
-      font-size: 9px;
+      padding: 0 32px 8px;
+      font-size: 10px;
     }
     .sidebar-footer {
-      padding: 16px 24px 32px;
-      margin-top: 12px;
+      padding: 20px 32px 40px;
+      margin-top: 24px;
     }
     .nav-items a {
       padding: 11px 24px;
@@ -4431,7 +4432,7 @@
 <body>
 
 <!-- Mobile toggle -->
-<button class="mobile-toggle" onclick="toggleSidebar()" aria-label="Menu">&#9776;</button>
+<button class="mobile-toggle" id="mobileToggle" onclick="toggleSidebar()" aria-label="Menu">&#9776;</button>
 <div class="overlay" onclick="toggleSidebar()"></div>
 
 <div class="app">
@@ -7125,13 +7126,8 @@ This is a relationship moment. No "we wish you all the best in your future endea
 
     window.scrollTo({ top: 0, behavior: 'instant' });
 
-    // Close mobile sidebar and unlock body scroll
+    // Close mobile sidebar
     document.getElementById('sidebar').classList.remove('open');
-    document.querySelector('.overlay').classList.remove('open');
-    document.body.style.overflow = '';
-    document.body.style.position = '';
-    document.body.style.width = '';
-    document.body.style.top = '';
   }
 
   document.querySelectorAll('.nav-items a').forEach(link => {
@@ -7164,26 +7160,9 @@ This is a relationship moment. No "we wish you all the best in your future endea
   // Mobile sidebar
   function toggleSidebar() {
     const sidebar = document.getElementById('sidebar');
-    const overlay = document.querySelector('.overlay');
-    const isOpen = sidebar.classList.contains('open');
-
+    const btn = document.getElementById('mobileToggle');
     sidebar.classList.toggle('open');
-    overlay.classList.toggle('open');
-
-    // Lock body scroll when sidebar is open
-    if (!isOpen) {
-      document.body.style.overflow = 'hidden';
-      document.body.style.position = 'fixed';
-      document.body.style.width = '100%';
-      document.body.dataset.scrollY = window.scrollY;
-      document.body.style.top = `-${window.scrollY}px`;
-    } else {
-      document.body.style.overflow = '';
-      document.body.style.position = '';
-      document.body.style.width = '';
-      document.body.style.top = '';
-      window.scrollTo(0, parseInt(document.body.dataset.scrollY || '0'));
-    }
+    btn.innerHTML = sidebar.classList.contains('open') ? '&#10005;' : '&#9776;';
   }
 
   // Scroll reveal (Intersection Observer)
